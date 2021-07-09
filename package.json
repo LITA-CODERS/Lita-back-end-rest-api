@@ -1,0 +1,8 @@
+{
+  "name": "Lita-back-end-rest-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Developers-XP37-Team-Projects/Lita-back-end-rest-api.git",
+  "author": "Welisson <welissonluca17@gmail.com>",
+  "license": "MIT"
+}
