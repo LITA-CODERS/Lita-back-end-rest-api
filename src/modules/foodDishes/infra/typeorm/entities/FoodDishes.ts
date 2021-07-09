@@ -14,6 +14,9 @@ class FoodDishes {
   readonly id: string;
 
   @Column()
+  name: string;
+
+  @Column()
   description: string;
 
   @Column()
