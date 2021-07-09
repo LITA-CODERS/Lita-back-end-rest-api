@@ -1,9 +1,10 @@
 import { getRepository, Repository } from 'typeorm';
 
-import { FoodDishes } from '../entities/FoodDishes';
-import { IUpdateFoodDishesDTO } from '@modules/foodDishes/dtos/IUpdateFoodDishesDTO';
 import { ICreateFoodDishesDTO } from '@modules/foodDishes/dtos/ICreateFoodDishes';
+import { IUpdateFoodDishesDTO } from '@modules/foodDishes/dtos/IUpdateFoodDishesDTO';
 import { IFoodDishesRepository } from '@modules/foodDishes/repositories/IFoodDishesRepository';
+
+import { FoodDishes } from '../entities/FoodDishes';
 
 class UserRepository implements IFoodDishesRepository {
   private repository: Repository<FoodDishes>;
