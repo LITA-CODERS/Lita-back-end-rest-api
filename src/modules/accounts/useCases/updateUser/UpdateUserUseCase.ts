@@ -21,7 +21,9 @@ class UpdateUserUseCase {
     id: string,
     { name, email, password }: IUserRequest
   ): Promise<void> {
-    if (!email) throw new AppError('Email incorrect!');
+    const userNotFound = await this.userRepository.findById(id);
+
+    if (!userNotFound) throw new AppError('User notfound !', 404);
 
     const userAlreadyExists = await this.userRepository.findByEmail(email);
 
