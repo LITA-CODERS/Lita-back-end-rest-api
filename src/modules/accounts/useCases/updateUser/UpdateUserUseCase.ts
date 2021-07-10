@@ -23,7 +23,7 @@ class UpdateUserUseCase {
   ): Promise<void> {
     const userNotFound = await this.userRepository.findById(id);
 
-    if (!userNotFound) throw new AppError('User notfound !', 404);
+    if (!userNotFound) throw new AppError('User not found !', 404);
 
     const userAlreadyExists = await this.userRepository.findByEmail(email);
 
