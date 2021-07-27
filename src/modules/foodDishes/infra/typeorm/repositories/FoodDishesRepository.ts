@@ -6,7 +6,7 @@ import { IFoodDishesRepository } from '@modules/foodDishes/repositories/IFoodDis
 
 import { FoodDishes } from '../entities/FoodDishes';
 
-class UserRepository implements IFoodDishesRepository {
+class FoodDishesRepository implements IFoodDishesRepository {
   private repository: Repository<FoodDishes>;
 
   constructor() {
@@ -62,4 +62,4 @@ class UserRepository implements IFoodDishesRepository {
   }
 }
 
-export { UserRepository };
+export { FoodDishesRepository };
