@@ -6,7 +6,8 @@ import { IFoodDishesRepository } from '@modules/foodDishes/repositories/IFoodDis
 interface IFoodDishesRequest {
   name: string;
   description: string;
-  image_url: string;
+  price: string;
+  category_id: string;
 }
 
 @injectable()
@@ -18,12 +19,14 @@ class CreateDishesUseCase {
   async execute({
     name,
     description,
-    image_url,
+    price,
+    category_id,
   }: IFoodDishesRequest): Promise<FoodDishes> {
     const result = this.foodDishesRepository.create({
       name,
       description,
-      image_url,
+      price,
+      category_id,
     });
 
     return result;

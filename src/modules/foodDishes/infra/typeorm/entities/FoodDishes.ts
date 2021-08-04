@@ -2,6 +2,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -19,7 +20,10 @@ class FoodDishes {
   description: string;
 
   @Column()
-  image_url: string;
+  price: string;
+
+  @Column()
+  category_id: string;
 
   @CreateDateColumn()
   created_at: Date;

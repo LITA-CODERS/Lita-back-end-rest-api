@@ -1,7 +1,8 @@
 interface ICreateFoodDishesDTO {
   name: string;
   description: string;
-  image_url: string;
+  price: string;
+  category_id: string;
 }
 
 export { ICreateFoodDishesDTO };

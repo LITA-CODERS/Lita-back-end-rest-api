@@ -1,6 +1,6 @@
 interface IUpdateFoodDishesDTO {
   description?: string;
-  image_url?: string;
+  price?: string;
 }
 
 export { IUpdateFoodDishesDTO };

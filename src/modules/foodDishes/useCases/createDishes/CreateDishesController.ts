@@ -6,19 +6,22 @@ import { CreateDishesUseCase } from './CreateDishesUseCase';
 interface IFoodDishesRequest {
   name: string;
   description: string;
-  image_url: string;
+  price: string;
+  category_id: string;
 }
 
 class CreateDishesController {
   async handle(request: Request, response: Response) {
-    const { name, description, image_url }: IFoodDishesRequest = request.body;
+    const { name, description, price, category_id }: IFoodDishesRequest =
+      request.body;
 
     const createDishesUseCase = container.resolve(CreateDishesUseCase);
 
     const dishes = await createDishesUseCase.execute({
       name,
       description,
-      image_url,
+      price,
+      category_id,
     });
     return response.status(201).json(dishes);
   }

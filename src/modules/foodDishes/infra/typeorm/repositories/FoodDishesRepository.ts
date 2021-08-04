@@ -16,12 +16,14 @@ class FoodDishesRepository implements IFoodDishesRepository {
   async create({
     name,
     description,
-    image_url,
+    price,
+    category_id,
   }: ICreateFoodDishesDTO): Promise<FoodDishes> {
     const foodDishes = this.repository.create({
       name,
       description,
-      image_url,
+      price,
+      category_id,
     });
 
     const result = await this.repository.save(foodDishes);
@@ -31,9 +33,9 @@ class FoodDishesRepository implements IFoodDishesRepository {
 
   async update(
     id: string,
-    { description, image_url }: IUpdateFoodDishesDTO
+    { description, price }: IUpdateFoodDishesDTO
   ): Promise<void> {
-    await this.repository.update({ id }, { description, image_url });
+    await this.repository.update({ id }, { description, price });
   }
 
   async findAll(): Promise<FoodDishes[]> {
