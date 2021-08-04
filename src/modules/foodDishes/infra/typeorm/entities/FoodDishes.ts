@@ -1,7 +1,9 @@
+import { Categories } from '@modules/categories/infra/typeorm/entities/Categories';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryColumn,
   UpdateDateColumn,
@@ -12,6 +14,10 @@ import { v4 as uuid } from 'uuid';
 class FoodDishes {
   @PrimaryColumn()
   readonly id: string;
+
+  @ManyToOne(() => Categories)
+  @JoinColumn({ name: 'category_id' })
+  categories: Categories;
 
   @Column()
   name: string;
