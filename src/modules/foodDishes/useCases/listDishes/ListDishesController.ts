@@ -9,7 +9,6 @@ class ListDishesController {
 
     const result = await listDishesUseCase.execute();
     return response.status(200).json({
-      message: 'update success',
       result,
     });
   }
