@@ -6,6 +6,8 @@ import { FindDisheByIdController } from '@modules/foodDishes/useCases/findDishes
 import { ListDishesController } from '@modules/foodDishes/useCases/listDishes/ListDishesController';
 import { UpdateDishesController } from '@modules/foodDishes/useCases/updateDishes /UpdateDishesController';
 
+import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
+
 const dishesRoutes = Router();
 
 const createDishesController = new CreateDishesController();
@@ -14,10 +16,18 @@ const findDisheByIdCOntroller = new FindDisheByIdController();
 const updateDishesController = new UpdateDishesController();
 const deleteDishesController = new DeleteDishesController();
 
-dishesRoutes.post('/dish', createDishesController.handle);
+dishesRoutes.post('/dish', ensureAuthenticated, createDishesController.handle);
 dishesRoutes.get('/dish', listDishesController.handle);
 dishesRoutes.get('/dish/:id', findDisheByIdCOntroller.handle);
-dishesRoutes.put('/dish/:id', updateDishesController.handle);
-dishesRoutes.delete('/dish/:id', deleteDishesController.handle);
+dishesRoutes.put(
+  '/dish/:id',
+  ensureAuthenticated,
+  updateDishesController.handle
+);
+dishesRoutes.delete(
+  '/dish/:id',
+  ensureAuthenticated,
+  deleteDishesController.handle
+);
 
 export { dishesRoutes };
