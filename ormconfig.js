@@ -1,5 +1,5 @@
 module.exports = {
-  type: process.env.DB_TYPE,
+  type: 'postgres',
   url: process.env.DB_URL,
   migrations: ['./src/shared/infra/typeorm/migrations/**.ts'],
   entities: ['./src/modules/*/infra/typeorm/entities/**.ts'],

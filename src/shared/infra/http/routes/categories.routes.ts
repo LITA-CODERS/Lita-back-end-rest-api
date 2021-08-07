@@ -3,7 +3,7 @@ import { Router } from 'express';
 import { CreateCategoryController } from '@modules/categories/useCases/createCategory/CreateCategoryController';
 import { DeleteCategoryController } from '@modules/categories/useCases/deleteCategory/DeleteCategoryController';
 import { FindCategoryByIdController } from '@modules/categories/useCases/findCategoryById/FindCategoryByIdController';
-import { ListCategoriesController } from '@modules/categories/useCases/listDishes/ListCategoriesController';
+import { ListCategoriesController } from '@modules/categories/useCases/listCategories/ListCategoriesController';
 
 import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 
