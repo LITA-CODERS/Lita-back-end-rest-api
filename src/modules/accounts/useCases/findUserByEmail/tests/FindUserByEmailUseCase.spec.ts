@@ -2,49 +2,37 @@ import { ICreateUserDTO } from '@modules/accounts/dtos/ICreateUserDTO';
 import { AppError } from '@shared/errors/AppError';
 
 import { UserFakerRepository } from '../../../repositories/in-memory/UserFakerRepository';
-import { CreateUserUseCase } from '../CreateUserUseCase';
+import { CreateUserUseCase } from '../../createUser/CreateUserUseCase';
+import { FindUserByEmailUseCase } from '../FindUserByEmailUseCase';
 
 let userFakerRepository: UserFakerRepository;
 let createUserUseCase: CreateUserUseCase;
+let findUserByEmailUseCase: FindUserByEmailUseCase;
 
-describe('Create User', () => {
+describe('Find User By Email', () => {
   beforeEach(() => {
     userFakerRepository = new UserFakerRepository();
     createUserUseCase = new CreateUserUseCase(userFakerRepository);
+    findUserByEmailUseCase = new FindUserByEmailUseCase(userFakerRepository);
   });
 
-  it('should be able to new create user', async () => {
+  it('should be able to find user', async () => {
     const createUserDTO: ICreateUserDTO = {
       name: 'test',
       email: 'email@gmail.com',
       password: 'password',
     };
-    await createUserUseCase.execute(createUserDTO);
+    const { email } = await createUserUseCase.execute(createUserDTO);
+    await findUserByEmailUseCase.execute(email);
     expect(userFakerRepository.users.length).toBe(1);
     expect(userFakerRepository.users[0]).toHaveProperty('id');
     expect(userFakerRepository.users[0]).toHaveProperty('name');
     expect(userFakerRepository.users[0]).toHaveProperty('email');
     expect(userFakerRepository.users[0]).toHaveProperty('password');
   });
-  it('should throw error if user already exists', async () => {
+  it('should throw error if find user not exists', async () => {
     await expect(async () => {
-      const createUserDTO: ICreateUserDTO = {
-        name: 'test',
-        email: 'email@gmail.com',
-        password: 'password',
-      };
-      await createUserUseCase.execute(createUserDTO);
-      await createUserUseCase.execute(createUserDTO);
-    }).rejects.toBeInstanceOf(AppError);
-  });
-  it('should throw error if e-mail incorrect', async () => {
-    await expect(async () => {
-      const createUserDTO: ICreateUserDTO = {
-        name: 'test',
-        email: '',
-        password: 'password',
-      };
-      await createUserUseCase.execute(createUserDTO);
+      await findUserByEmailUseCase.execute('teste@gmail.com');
     }).rejects.toBeInstanceOf(AppError);
   });
 });
