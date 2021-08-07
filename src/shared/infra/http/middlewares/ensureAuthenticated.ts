@@ -19,7 +19,7 @@ export function ensureAuthenticated(
   const [, token] = authToken.split(' ');
 
   try {
-    const { sub } = verify(token, process.env.TOKEN) as IPayload;
+    const { sub } = verify(token, `${process.env.TOKEN}`) as IPayload;
 
     request.user_id = sub;
 
