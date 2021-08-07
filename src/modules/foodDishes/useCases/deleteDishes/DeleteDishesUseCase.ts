@@ -12,7 +12,7 @@ class DeleteDishesUseCase {
   async execute(id: string): Promise<void> {
     const dishExists = await this.foodDishesRepository.findById(id);
 
-    if (!dishExists) throw new AppError('Dish not found');
+    if (!dishExists) throw new AppError('Dish not found', 404);
     await this.foodDishesRepository.delete(id);
   }
 }

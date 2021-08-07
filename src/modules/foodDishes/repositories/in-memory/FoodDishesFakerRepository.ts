@@ -32,7 +32,7 @@ class FoodDishesFakerRepository implements IFoodDishesRepository {
   }
   async findAll(): Promise<FoodDishes[]> {
     // eslint-disable-next-line no-return-await
-    return await this.findAll();
+    return await this.dishes;
   }
   async findByName(name: string): Promise<FoodDishes> {
     return this.dishes.find((dish) => dish.name === name);
