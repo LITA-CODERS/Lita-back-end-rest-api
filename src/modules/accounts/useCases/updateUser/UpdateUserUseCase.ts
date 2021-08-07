@@ -27,7 +27,7 @@ class UpdateUserUseCase {
 
     const userAlreadyExists = await this.userRepository.findByEmail(email);
 
-    if (userAlreadyExists) throw new AppError('User already exists!');
+    if (userAlreadyExists) throw new AppError('E-mail already exists!');
     const passwordHash = await hash(password, 8);
 
     await this.userRepository.update(id, {
