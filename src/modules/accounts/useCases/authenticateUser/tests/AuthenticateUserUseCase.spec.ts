@@ -8,7 +8,7 @@ let userFakerRepository: UserFakerRepository;
 let createUserUseCase: CreateUserUseCase;
 let authenticateUserUseCase: AuthenticateUserUseCase;
 
-describe('Create User', () => {
+describe('Authenticate User', () => {
   beforeEach(() => {
     userFakerRepository = new UserFakerRepository();
     createUserUseCase = new CreateUserUseCase(userFakerRepository);
