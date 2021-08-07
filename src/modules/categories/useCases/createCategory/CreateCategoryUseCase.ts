@@ -2,6 +2,7 @@ import { inject, injectable } from 'tsyringe';
 
 import { Categories } from '@modules/categories/infra/typeorm/entities/Categories';
 import { ICategoriesRepository } from '@modules/categories/repositories/ICategoriesRepository';
+import { AppError } from '@shared/errors/AppError';
 
 interface ICategoriesRequest {
   name: string;
@@ -14,6 +15,7 @@ class CreateCategoryUseCase {
     private categoriesRepository: ICategoriesRepository
   ) {}
   async execute({ name }: ICategoriesRequest): Promise<Categories> {
+    if (!name) throw new AppError('name is required');
     const result = this.categoriesRepository.create({
       name,
     });
