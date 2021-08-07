@@ -10,7 +10,9 @@ class DeleteUserController {
 
     const user = await deleteUserUseCase.execute(id);
 
-    return response.json(user);
+    return response.json({
+      message: 'success',
+    });
   }
 }
 

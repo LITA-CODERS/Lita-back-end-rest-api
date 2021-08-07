@@ -25,8 +25,9 @@ describe('Delete User', () => {
     };
     const { id } = await createUserUseCase.execute(createUserDTO);
     await deleteUserUseCase.execute(id);
+    expect(userFakerRepository.users.length).toBe(0);
   });
-  it('should throw error if user not exists', async () => {
+  it('should throw error if delete user not exists', async () => {
     await expect(async () => {
       await deleteUserUseCase.execute('4');
     }).rejects.toBeInstanceOf(AppError);
