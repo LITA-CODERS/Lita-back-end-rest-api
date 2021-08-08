@@ -8,7 +8,7 @@ class DeleteUserController {
     const { id } = request.params;
     const deleteUserUseCase = container.resolve(DeleteUserUseCase);
 
-    const user = await deleteUserUseCase.execute(id);
+    await deleteUserUseCase.execute(id);
 
     return response.json({
       message: 'success',
