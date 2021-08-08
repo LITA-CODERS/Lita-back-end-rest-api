@@ -34,7 +34,7 @@ describe('Create user controller', () => {
       .send(createUserDTO);
     expect(response.status).toBe(400);
   });
-  it('should throw error if user already exists', async () => {
+  it('should throw error if user incorrect e-mail', async () => {
     const createUserDTO: ICreateUserDTO = {
       name: 'test',
       email: '',
