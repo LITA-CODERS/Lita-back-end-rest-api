@@ -8,7 +8,7 @@ import { connection } from '@shared/infra/typeorm';
 let db: Connection;
 let token;
 let responseUser;
-describe('Delete categories controller', () => {
+describe('Find by id categories controller', () => {
   beforeAll(async () => {
     db = await connection();
     await db.runMigrations();
@@ -26,7 +26,7 @@ describe('Delete categories controller', () => {
     });
   });
 
-  it('should be able to delete a category', async () => {
+  it('should be able to find a category', async () => {
     const response = await request(app)
       .post(`/categories/`)
       .send({
@@ -36,14 +36,14 @@ describe('Delete categories controller', () => {
         Authorization: `Bearer ${token.body.token}`,
       });
     await request(app)
-      .delete(`/categories/${response.body.id}`)
+      .get(`/categories/${response.body.id}`)
       .set({
         Authorization: `Bearer ${token.body.token}`,
       });
   });
   it('should throw error if category not exists', async () => {
     await request(app)
-      .delete(`/categories/9b096f43-adff-470c-9261-552a1a94ef2e`)
+      .get(`/categories/9b096f43-adff-470c-9261-552a1a94ef2e`)
       .set({
         Authorization: `Bearer ${token.body.token}`,
       })

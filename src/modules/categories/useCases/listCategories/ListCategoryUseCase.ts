@@ -12,7 +12,7 @@ class ListCategoryUseCase {
   ) {}
   async execute(): Promise<Categories[]> {
     const result = await this.categoriesRepository.findAll();
-    if (result.length === 0) throw new AppError(`Categories not found`);
+    if (result.length === 0) throw new AppError(`Categories not found`, 404);
     return result;
   }
 }

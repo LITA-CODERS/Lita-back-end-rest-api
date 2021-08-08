@@ -8,7 +8,8 @@ import { connection } from '@shared/infra/typeorm';
 let db: Connection;
 let token;
 let responseUser;
-describe('Delete categories controller', () => {
+let responseCategories;
+describe('List categories controller', () => {
   beforeAll(async () => {
     db = await connection();
     await db.runMigrations();
@@ -24,10 +25,7 @@ describe('Delete categories controller', () => {
       email: 'email@gmail.com',
       password: 'password',
     });
-  });
-
-  it('should be able to delete a category', async () => {
-    const response = await request(app)
+    responseCategories = await request(app)
       .post(`/categories/`)
       .send({
         name: 'teste ',
@@ -35,15 +33,26 @@ describe('Delete categories controller', () => {
       .set({
         Authorization: `Bearer ${token.body.token}`,
       });
+  });
+
+  it('should be able to list a categories', async () => {
     await request(app)
-      .delete(`/categories/${response.body.id}`)
+      .get(`/categories`)
+      .send()
+      .set({
+        Authorization: `Bearer ${token.body.token}`,
+      })
+      .expect(200);
+  });
+  it('should throw error if list categories not exists', async () => {
+    await request(app)
+      .delete(`/categories/${responseCategories.body.id}`)
       .set({
         Authorization: `Bearer ${token.body.token}`,
       });
-  });
-  it('should throw error if category not exists', async () => {
     await request(app)
-      .delete(`/categories/9b096f43-adff-470c-9261-552a1a94ef2e`)
+      .get(`/categories`)
+      .send()
       .set({
         Authorization: `Bearer ${token.body.token}`,
       })
