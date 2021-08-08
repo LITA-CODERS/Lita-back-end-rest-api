@@ -12,7 +12,7 @@ class ListDishesUseCase {
   ) {}
   async execute(): Promise<FoodDishes[]> {
     const result = await this.foodDishesRepository.findAll();
-    if (result.length === 0) throw new AppError(`No food dishes found`);
+    if (result.length === 0) throw new AppError(`No food dishes found`, 404);
     return result;
   }
 }
