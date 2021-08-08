@@ -13,7 +13,7 @@ class FindDisheByIdUseCase {
   async execute(id: string): Promise<FoodDishes> {
     const foodDisheExists = await this.foodDishesRepository.findById(id);
 
-    if (!foodDisheExists) throw new AppError('Dish not found');
+    if (!foodDisheExists) throw new AppError('Dish not found', 404);
     return foodDisheExists;
   }
 }
