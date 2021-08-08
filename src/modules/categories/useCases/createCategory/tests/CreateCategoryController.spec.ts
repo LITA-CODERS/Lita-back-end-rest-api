@@ -8,7 +8,7 @@ import { connection } from '@shared/infra/typeorm';
 let db: Connection;
 let token;
 let responseUser;
-describe('Update users controller', () => {
+describe('Create categories controller', () => {
   beforeAll(async () => {
     db = await connection();
     await db.runMigrations();
@@ -26,27 +26,27 @@ describe('Update users controller', () => {
     });
   });
 
-  it('should be able to update a user', async () => {
+  it('should be able to create a category', async () => {
     await request(app)
-      .put(`/accounts/user/${responseUser.body.id}`)
+      .post(`/categories/`)
       .send({
-        name: 'update',
-        email: 'update_email@gmail.com',
-        password: 'password',
+        name: 'teste ',
       })
       .set({
         Authorization: `Bearer ${token.body.token}`,
       })
-      .expect(200);
+      .expect(201);
   });
-  it('should throw error if update user not exists', async () => {
+  it('should throw error if name invalid', async () => {
     await request(app)
-      .put(`/accounts/user/7a17ce27-db6a-479d-91bd-71400a9b08de`)
-      .send()
+      .post(`/categories/`)
+      .send({
+        name: '',
+      })
       .set({
         Authorization: `Bearer ${token.body.token}`,
       })
-      .expect(404);
+      .expect(400);
   });
   afterAll(async () => {
     await db.query(

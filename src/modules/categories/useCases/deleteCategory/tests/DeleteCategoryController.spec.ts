@@ -8,7 +8,7 @@ import { connection } from '@shared/infra/typeorm';
 let db: Connection;
 let token;
 let responseUser;
-describe('Update users controller', () => {
+describe('Create categories controller', () => {
   beforeAll(async () => {
     db = await connection();
     await db.runMigrations();
@@ -26,23 +26,24 @@ describe('Update users controller', () => {
     });
   });
 
-  it('should be able to update a user', async () => {
-    await request(app)
-      .put(`/accounts/user/${responseUser.body.id}`)
+  it('should be able to delete a category', async () => {
+    const response = await request(app)
+      .post(`/categories/`)
       .send({
-        name: 'update',
-        email: 'update_email@gmail.com',
-        password: 'password',
+        name: 'teste ',
       })
       .set({
         Authorization: `Bearer ${token.body.token}`,
-      })
-      .expect(200);
-  });
-  it('should throw error if update user not exists', async () => {
+      });
     await request(app)
-      .put(`/accounts/user/7a17ce27-db6a-479d-91bd-71400a9b08de`)
-      .send()
+      .delete(`/categories/${response.body.id}`)
+      .set({
+        Authorization: `Bearer ${token.body.token}`,
+      });
+  });
+  it('should throw error if category not exists', async () => {
+    await request(app)
+      .delete(`/categories/9b096f43-adff-470c-9261-552a1a94ef2e`)
       .set({
         Authorization: `Bearer ${token.body.token}`,
       })
