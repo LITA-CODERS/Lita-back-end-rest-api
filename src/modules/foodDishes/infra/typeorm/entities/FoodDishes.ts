@@ -1,4 +1,3 @@
-import { Categories } from '@modules/categories/infra/typeorm/entities/Categories';
 import {
   Column,
   CreateDateColumn,
@@ -9,6 +8,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuid } from 'uuid';
+
+import { Categories } from '../../../../categories/infra/typeorm/entities/Categories';
 
 @Entity('food_dishes')
 class FoodDishes {
