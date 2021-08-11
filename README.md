@@ -95,9 +95,9 @@ Por fim de garantir o funcionamento correto de todas as funcionalidades da aplic
 
 
 ##  💁🏿‍♂️ Notas do desenvolvedor
-- Foi pensando em um sistema de autenticação, que inclusive esta todo em funcionamento, só não foi implementado no front pelo tempo curto
+- Foi pensndo em um sistema de autenticação, que inclusive esta todo em funcionamento, só não foi implementado no front pelo tempo curto
 - Todo o projeto foi desenhado para ser o mais limpo possível utilizando conceitos de __**SOLID**__ e __CLEAN CODE__, visando qualidade do código, também esta sendo utilizando o repository pattern.
-- Plataforma escolhida para o deplou foi o **heroku**, pela praticidade que ela nós entrega.
+- Plataforma escolhida para o deploy foi o **heroku**, pela praticidade que ela nós entrega.
 <!-- LICENSE -->
 
 # Licença
