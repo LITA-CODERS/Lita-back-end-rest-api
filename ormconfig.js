@@ -1,6 +1,6 @@
 module.exports = {
   type: 'postgres',
-  url: 'postgres://yhpxajwx:kOdorQ2jUvX4OwQ7wIYNqGK7Uk8Ze9O1@chunee.db.elephantsql.com/yhpxajwx',
+  url: process.env.DB_URL,
   migrations: ['./src/shared/infra/typeorm/migrations/**.ts'],
   entities: ['./src/modules/*/infra/typeorm/entities/**.ts'],
   cli: {

@@ -80,11 +80,24 @@ $ yarn typeorm migration:run ou npm typeorm migration:run
 
 # Rode a aplicação usando o comando
 $ yarn dev ou npm run dev
+
+# Para rodar os testes execute este comando
+$ yarn test ou npm test
 ```
+
+## 👷🏿 Testes automatizados 👷🏿
+Por fim de garantir o funcionamento correto de todas as funcionalidades da aplicação, foi realizado testes unitários e de integrações utilizando o Jest, todos os testes se encontram dentro da pasta tests presentes em seu respectivo useCase, resultados obtidos foram quase **100%** de cobertura nos testes faltando bem pouco para isto.
+
+<img src="https://i.imgur.com/PjR63QO.png">
 
 ## 👨🏽‍🚀 Deploy 
 **__Heroku__**: https://github.com/LITA-CODERS/Lita-back-end-rest-api/deployments/activity_log?environment=lita12
 
+
+##  💁🏿‍♂️ Notas do desenvolvedor
+- Foi pensando em um sistema de autenticação, que inclusive esta todo em funcionamento, só não foi implementado no front pelo tempo curto
+- Todo o projeto foi desenhado para ser o mais limpo possível utilizando conceitos de __**SOLID**__ e __CLEAN CODE__, visando qualidade do código, também esta sendo utilizando o repository pattern.
+- Plataforma escolhida para o deplou foi o **heroku**, pela praticidade que ela nós entrega.
 <!-- LICENSE -->
 
 # Licença

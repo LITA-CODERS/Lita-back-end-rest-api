@@ -41,14 +41,6 @@ describe('Find by id categories controller', () => {
         Authorization: `Bearer ${token.body.token}`,
       });
   });
-  it('should throw error if category not exists', async () => {
-    await request(app)
-      .get(`/categories/9b096f43-adff-470c-9261-552a1a94ef2e`)
-      .set({
-        Authorization: `Bearer ${token.body.token}`,
-      })
-      .expect(404);
-  });
   afterAll(async () => {
     await db.query(
       'drop table food_dishes; drop table categories; drop table users; drop table migrations;'
