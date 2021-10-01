@@ -11,6 +11,8 @@
     "test": "set NODE_ENV=test&&jest --detectOpenHandles --runInBand --testTimeout=10000"
   },
   "dependencies": {
+    "@sentry/integrations": "^6.13.2",
+    "@sentry/node": "^6.13.2",
     "bcryptjs": "^2.4.3",
     "class-validator": "^0.13.1",
     "cors": "^2.8.5",
